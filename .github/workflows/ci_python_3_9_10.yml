@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI_python_3_9_10
 
 # Controls when the workflow will run
 on:
@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  tests_python_3_9_10:
+  tests:
     strategy:
       fail-fast: false
       matrix:
