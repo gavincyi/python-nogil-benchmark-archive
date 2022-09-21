@@ -18,5 +18,5 @@ jobs:
       run: docker build . --file Dockerfile --tag python-image
     - name: Install
       run: docker run python-image make install
-    - name: Run test
-      run: docker run python-image make test
+    - name: Run benchmark
+      run: docker run python-image python python-nogil-benchmark/simple.py
