@@ -19,4 +19,4 @@ jobs:
     - name: Install
       run: docker run python-image make install
     - name: Run benchmark
-      run: docker run python-image python python-nogil-benchmark/simple.py
+      run: docker run python-image python python_nogil_benchmark/simple.py
