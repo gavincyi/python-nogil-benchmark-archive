@@ -16,10 +16,10 @@ echo "Description: $description";
 
 echo "Renaming project..."
 
-original_author="author_name"
-original_name="project_name"
-original_urlname="project_urlname"
-original_description="project_description"
+original_author="gavincyi"
+original_name="python_nogil_benchmark"
+original_urlname="python-nogil-benchmark"
+original_description="Awesome python_nogil_benchmark created by gavincyi"
 # for filename in $(find . -name "*.*") 
 for filename in $(git ls-files) 
 do
@@ -30,7 +30,7 @@ do
     echo "Renamed $filename"
 done
 
-mv project_name $name
+mv python_nogil_benchmark $name
 
 # This command runs only once on GHA!
 rm -rf .github/template.yml
