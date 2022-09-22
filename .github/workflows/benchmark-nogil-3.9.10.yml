@@ -1,4 +1,4 @@
-name: Benchmark (Python nogil-3.9.10)
+name: pyperformance (Python nogil-3.9.10)
 
 on:
   push:
@@ -18,5 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag python-image
     - name: Install
       run: docker run python-image make install
-    - name: Run benchmark
-      run: docker run python-image python python_nogil_benchmark/simple.py
+    - name: Run pyperformance
+      run: docker run python-image python -m pyperformance -o nogil-3.9.10.json
+    - name: Show pyperformance result
+      run: cat nogil-3.9.10.json
