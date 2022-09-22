@@ -19,6 +19,6 @@ jobs:
     - name: Install
       run: docker run python-image make install
     - name: Run pyperformance
-      run: docker run python-image python -m pyperformance -o nogil-3.9.10.json
+      run: docker run python-image python -m pyperformance run -o nogil-3.9.10.json
     - name: Show pyperformance result
       run: cat nogil-3.9.10.json
