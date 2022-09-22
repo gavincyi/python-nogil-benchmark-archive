@@ -19,12 +19,12 @@ jobs:
     - name: nogil 3.9.10 Install
       run: docker run image-nogil-3-9-10 make install
     - name: Run nogil-3-9-10 pyperformance
-      run: docker run image-nogil-3-9-10 python -m pyperformance run -o python-nogil-3.9.10.json
+      run: docker run image-nogil-3-9-10 python -m pyperformance run -o python-nogil-3.9.10.json --benchmarks=-sqlalchemy_declarative,-sqlalchemy_imperative
     - name: Build the 3.9.10 Docker image
       run: docker build . --file Dockerfile_3_9_10 --tag image-3-9-10
     - name: 3.9.10 Install
       run: docker run image-3-9-10 make install
     - name: Run nogil-3-9-10 pyperformance
-      run: docker run image-3-9-10 python -m pyperformance run -o python-3.9.10.json
+      run: docker run image-3-9-10 python -m pyperformance run -o python-3.9.10.json --benchmarks=-sqlalchemy_declarative,-sqlalchemy_imperative
     - name: Compare result
       run: docker run image-3-9-10 python -m pyperformance compare python-3.9.10.json python-nogil-3.9.10.json
