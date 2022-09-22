@@ -1,0 +1,30 @@
+name: pyperformance (3.9.10 v.s. nogil 3.9.10)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the nogil 3.9.10 Docker image
+      run: docker build . --file Dockerfile_nogil_3_9_10 --tag image-nogil-3-9-10
+    - name: nogil 3.9.10 Install
+      run: docker run image-nogil-3-9-10 make install
+    - name: Run nogil-3-9-10 pyperformance
+      run: docker run image-nogil-3-9-10 python -m pyperformance run -o python-nogil-3.9.10.json
+    - name: Build the 3.9.10 Docker image
+      run: docker build . --file Dockerfile_3_9_10 --tag image-3-9-10
+    - name: 3.9.10 Install
+      run: docker run image-3-9-10 make install
+    - name: Run nogil-3-9-10 pyperformance
+      run: docker run image-3-9-10 python -m pyperformance run -o python-3.9.10.json
+    - name: Compare result
+      run: docker run image-3-9-10 python -m pyperformance compare python-3.9.10.json python-nogil-3.9.10.json
