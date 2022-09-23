@@ -27,4 +27,4 @@ jobs:
     - name: Run nogil-3-9-10 pyperformance
       run: docker run -v $(pwd):/usr/src/app/output python-3-9-10 python -m pyperformance run -o /usr/src/app/output/python-3.9.10.json --benchmarks=-sqlalchemy_declarative,-sqlalchemy_imperative
     - name: Compare result
-      run: docker run python-3-9-10 python -m pyperformance compare /usr/src/app/output/python-3.9.10.json /usr/src/app/output/python-nogil-3.9.10.json
+      run: docker run -v $(pwd):/usr/src/app/output python-3-9-10 python -m pyperformance compare /usr/src/app/output/python-3.9.10.json /usr/src/app/output/python-nogil-3.9.10.json
